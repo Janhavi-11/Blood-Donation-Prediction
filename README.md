@@ -7,10 +7,14 @@ This project predicts whether a person is eligible to donate blood based on demo
 ## 📷 App Preview
 
 **Prediction: Eligible**
-![Eligible Donor](screenshots/Screenshot_eligible.png)
+<br>  
+![Eligible Donor](screenshots/Screenshot_eligible_1.png)
+![Eligible Donor 2](screenshots/Screenshot_eligible_2.png)
 
 **Prediction: Not Eligible**
-![Not Eligible Donor](screenshots/Screenshot_not_eligible.png)
+<br>  
+![Not Eligible Donor](screenshots/Screenshot_not_eligible_1.png)
+![Not Eligible Donor 2](screenshots/Screenshot_not_eligible_2.png)
 
 > 📌 The app checks conditions such as age, weight, hemoglobin, and last donation interval before using the machine learning model.
 
@@ -49,9 +53,38 @@ The project helps in automating the screening process for blood donation. It col
 
 ## 🚀 How to Run the Project
 
-### Step 1: Clone the Repository
+### Step 1: Set Up Environment
 
 ```bash
-git clone https://github.com/Janhavi-11/Blood-Donation-Prediction.git
-cd Blood-Donation-Prediction
+python -m venv venv
+# On Windows
+venv\Scripts\activate
+# On Mac/Linux
+source venv/bin/activate
 ```
+
+### Step 2: Install Required Libraries
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 3: Run the App
+
+```bash
+python app.py
+```
+### Step 4: Visit the App
+
+## Once the app is running, open your browser and go to:
+```bash
+http://127.0.0.1:5000
+```
+
+## ⚙️ Features
+
+- ✔️ Intuitive web UI
+- 🧪 Medical rules applied before ML (age, weight, hemoglobin)
+- 🔮 Prediction using trained model
+- 💬 Feedback with reason for eligibility or ineligibility
+- 📦 Includes source code, dataset, model, and web interface
