@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(82, 14, 14);
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+        }
+        form {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #1e4e29;
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 2px auto;
+            font-size: 15px;
+        }
+        button:hover {
+            background-color: #1e4e29;
+        }
+        .result {
+            display: none; /* Hidden by default */
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blood Donation Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="age">Age:</label>
+        <input type="number" name="age" required>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" name="weight" required>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" name="height" required>
+
+        <label for="hemoglobin">Hemoglobin (g/dL):</label>
+        <input type="number" step="0.1" name="hemoglobin" required>
+
+        <label for="blood_group">Blood Group:</label>
+        <select name="blood_group" required>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+
+        <label for="last_donation">Last Donation (months ago):</label>
+        <input type="number" name="last_donation" required>
+
+        <label for="total_donations">Total Number of Donations:</label>
+        <input type="number" name="total_donations" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <!-- Result box -->
+    <div class="result">
+        <h2>Prediction Result</h2>
+        {% if prediction_text %}
+        <p>Age: {{ request.form.get('age') }}</p>
+        <p>Gender: {{ request.form.get('gender') }}</p>
+        <p>Weight: {{ request.form.get('weight') }} kg</p>
+        <p>Height: {{ request.form.get('height') }} cm</p>
+        <p>Hemoglobin: {{ request.form.get('hemoglobin') }} g/dL</p>
+        <p>Blood Group: {{ request.form.get('blood_group') }}</p>
+        <p>Last Donation (months): {{ request.form.get('last_donation') }} months</p>
+        <p>Total Number of Donations: {{ request.form.get('total_donations') }} times</p>
+        <hr>
+        <p>Prediction: {{ prediction_text }}</p>
+        {% else %}
+        <p>Prediction will appear here after submission.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        // Show the result box after form submission
+        {% if prediction_text %}
+            document.querySelector('.result').style.display = 'block'; // Show the result box if there's a prediction
+        {% endif %}
+    </script>
+    
+</body>
+</html>
