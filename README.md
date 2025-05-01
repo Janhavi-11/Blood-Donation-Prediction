@@ -88,3 +88,10 @@ http://127.0.0.1:5000
 - 🔮 Prediction using trained model
 - 💬 Feedback with reason for eligibility or ineligibility
 - 📦 Includes source code, dataset, model, and web interface
+
+## 📜 License
+
+This project is protected by a custom license.  
+You are free to use it for personal or educational purposes only.  
+**Rebranding, redistribution, or commercial use is strictly prohibited without written permission.**  
+See [LICENSE](LICENSE) for full details.
